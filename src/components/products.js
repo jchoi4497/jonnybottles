@@ -51,7 +51,7 @@ export const categories = [
   },
   {
     id: 3,
-    name: "Cock-Tails",
+    name: "Cocktail",
     logo: { img: "/infusedPreRollPhotos/diamondInfused.jpg" },
     products: [
       {
@@ -149,12 +149,10 @@ export const categories = [
       },
     ],
   },
-  // {
-  //   id: 7,
-  //   logo: {img: "/FlowerPhotos/FrostedFlakes.webp"},
-  //   name: "Drinks",
-  //   products:[
-
-  //   ]
-  // },
+  {
+    id: 7,
+    name: "Whiskey",
+    logo: { img: "/FlowerPhotos/FrostedFlakes.webp" },
+    products: [],
+  },
 ];

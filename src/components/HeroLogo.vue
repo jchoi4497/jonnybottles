@@ -4,7 +4,7 @@
     <!-- Router-link wraps only the image -->
     <router-link to="/">
       <img
-        src="/Logo/bbbLogo.png"
+        src=""
         alt="Brown Boy Bags"
         class="h-24 w-auto object-contain cursor-pointer hover:scale-105 transition"
       />
