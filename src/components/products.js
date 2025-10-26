@@ -1,7 +1,7 @@
 export const categories = [
   {
     id: 1,
-    name: "Flower",
+    name: "Beer",
     logo: { img: "/FlowerPhotos/FrostedFlakes.webp" },
     products: [
       {
@@ -26,7 +26,7 @@ export const categories = [
   },
   {
     id: 2,
-    name: "Pre-rolls",
+    name: "Wine",
     logo: { img: "/preRollPhotos/WondersPurp10Pack.jpg" },
     products: [
       {
@@ -51,7 +51,7 @@ export const categories = [
   },
   {
     id: 3,
-    name: "Infused Pre-rolls",
+    name: "Cock-Tails",
     logo: { img: "/infusedPreRollPhotos/diamondInfused.jpg" },
     products: [
       {
@@ -76,7 +76,7 @@ export const categories = [
   },
   {
     id: 4,
-    name: "Vape Pens",
+    name: "Cognac",
     logo: { img: "/VapePensPhotos/dragonFruitVapePen.avif" },
     products: [
       {
@@ -101,7 +101,7 @@ export const categories = [
   },
   {
     id: 5,
-    name: "Concentrates",
+    name: "Tequila",
     logo: { img: "/ConcentratesPhotos/BerryCrepeDiamonds.avif" },
     products: [
       {
@@ -126,7 +126,7 @@ export const categories = [
   },
   {
     id: 6,
-    name: "Edibles",
+    name: "Vodka",
     logo: { img: "/EdiblesPhotos/HuckleBerryGummies.avif" },
     products: [
       {
