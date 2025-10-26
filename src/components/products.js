@@ -114,7 +114,7 @@ export const categories = [
       {
         id: 601,
         name: "Grey Goose",
-        img: "/VodkaPhotos/greygoose.jpg",
+        img: "/VodkaPhotos/greygoose.webp",
         description: "Grey Goose",
       },
       {
