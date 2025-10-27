@@ -2,7 +2,7 @@ export const categories = [
   {
     id: 1,
     name: "Beer",
-    logo: { img: "/BeerPhotos/spacedust.jpg" },
+    logo: { img: "/BeerPhotos/spacedust.png" },
     products: [
       {
         id: 101,
@@ -13,7 +13,7 @@ export const categories = [
       {
         id: 102,
         name: "Space Dust IPA",
-        img: "/BeerPhotos/spacedust.jpg",
+        img: "/BeerPhotos/spacedust.png",
         description: "IPA",
       },
       {
@@ -27,12 +27,12 @@ export const categories = [
   {
     id: 2,
     name: "Wine",
-    logo: { img: "/WinePhotos/lafleur.jpg" },
+    logo: { img: "/WinePhotos/lafleur.png" },
     products: [
       {
         id: 201,
         name: "Chateau Lafleur 2003, Pomerol",
-        img: "/WinePhotos/lafleur.jpg",
+        img: "/WinePhotos/lafleur.png",
         description: "Chateau Lafleur 2003, Pomerol",
       },
     ],
@@ -40,12 +40,12 @@ export const categories = [
   {
     id: 3,
     name: "Cocktails",
-    logo: { img: "/CocktailPhotos/moscowmule.jpg" },
+    logo: { img: "/CocktailPhotos/moscowmule.png" },
     products: [
       {
         id: 301,
         name: "Michelada",
-        img: "/CocktailPhotos/michelada.jpg",
+        img: "/CocktailPhotos/michelada.png",
         description: "Michelada",
       },
       {
@@ -57,7 +57,7 @@ export const categories = [
       {
         id: 303,
         name: "Moscow Mule",
-        img: "/CocktailPhotos/moscowmule.jpg",
+        img: "/CocktailPhotos/moscowmule.png",
         description: "Moscow Mule",
       },
     ],
@@ -76,7 +76,7 @@ export const categories = [
       {
         id: 2,
         name: "Remy Martin 1738",
-        img: "/CognacPhotos/remymartin.webp",
+        img: "/CognacPhotos/remymartin.png",
         description: "Remy Martin 1738",
       },
     ],
@@ -95,13 +95,13 @@ export const categories = [
       {
         id: 502,
         name: "Don Julio Anejo",
-        img: "/TequilaPhotos/djanejo.webp",
+        img: "/TequilaPhotos/djanejo.png",
         description: "Don Julio Anejo",
       },
       {
         id: 503,
         name: "Patron",
-        img: "/TequilaPhotos/patron.jog",
+        img: "/TequilaPhotos/patron.png",
         description: "Patron",
       },
     ],
@@ -109,12 +109,12 @@ export const categories = [
   {
     id: 6,
     name: "Vodka",
-    logo: { img: "/VodkaPhotos/greygoose.webp" },
+    logo: { img: "/VodkaPhotos/greygoose.png" },
     products: [
       {
         id: 601,
         name: "Grey Goose",
-        img: "/VodkaPhotos/greygoose.webp",
+        img: "/VodkaPhotos/greygoose.png",
         description: "Grey Goose",
       },
       {
@@ -128,12 +128,12 @@ export const categories = [
   {
     id: 7,
     name: "Whiskey",
-    logo: { img: "/WhiskeyPhotos/macallan.webp" },
+    logo: { img: "/WhiskeyPhotos/macallan.png" },
     products: [
       {
         id: 701,
         name: "Macallan",
-        img: "/WhiskeyPhotos/macallan.webp",
+        img: "/WhiskeyPhotos/macallan.png",
         description: "Whiskey",
       },
       {
