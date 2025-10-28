@@ -105,6 +105,33 @@ export const categories = [
   },
   {
     id: categoryId,
+    name: "Soju",
+    logo: { img: "/SojuPhotos/sojufreshog.png" },
+    products: [
+      {
+        id: productId++,
+        name: "Jinro Chamisul Soju",
+        img: "/SojuPhotos/sojufreshog.png",
+        description: "Soju",
+        category: "Soju",
+        alcoholPercentage: 16,
+        country: "South Korea",
+        tags: ["Soju"],
+      },
+      {
+        id: productId++,
+        name: "Chum Churum Soon Hari Yogurt Soju ",
+        img: "/SojuPhotos/sojuyogurt.png",
+        description: "Yogurt Flavored Soju",
+        category: "Soju",
+        alcoholPercentage: 13,
+        country: "South Korea",
+        tags: ["Soju"],
+      },
+    ],
+  },
+  {
+    id: categoryId,
     name: "Tequila",
     logo: { img: "/TequilaPhotos/donjulio1942.webp" },
     products: [
