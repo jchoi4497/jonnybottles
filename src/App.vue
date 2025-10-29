@@ -81,6 +81,9 @@ const isOpen = ref(false);
           v-if="isOpen"
           class="fixed left-0 right-0 top-32 z-40 h-[calc(100vh-8rem)] bg-gray-200 flex flex-col items-center pt-8 gap-8 text-2xl font-medium"
         >
+        <!-- close-menu emitted from SearchBar.vue  -->
+          <SearchBar @close-menu="isOpen = false" />
+
           <router-link @click="isOpen = false" to="/">Home</router-link>
           <router-link @click="isOpen = false" to="/products"
             >Products</router-link

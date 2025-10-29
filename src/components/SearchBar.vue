@@ -47,6 +47,9 @@ const handleClickOutside = (event) => {
   }
 };
 
+// define emite to communicate to other component for isOpen mobile menu
+const emit = defineEmits(["close-menu"]);
+
 // Add/Remove event listener
 onMounted(() => {
   document.addEventListener("click", handleClickOutside);
@@ -66,6 +69,8 @@ function handleEnter() {
 function handleSelect(item) {
   // clears search
   showSuggestions.value = false;
+  // Emit event to close menu
+  emit("close-menu");
   // if category navigates to category page, if specific item goes to product details
   if (item.type === "category") {
     router.push(`/products/${item.name}`);
@@ -76,7 +81,7 @@ function handleSelect(item) {
 </script>
 
 <template>
-  <div ref="searchWrapper" class relative w-80>
+  <div ref="searchWrapper" class="relative w-auto">
     <!-- focus and input keeps suggestions when focus/typing otherwise box goes away after one type -->
     <input
       v-model="query"
