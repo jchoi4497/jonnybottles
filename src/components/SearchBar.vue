@@ -55,6 +55,13 @@ onBeforeUnmount(() => {
   document.removeEventListener("click", handleClickOutside);
 });
 
+// if there are suggestions, then handleSelection function chooses first option from filteredSuggestions array
+function handleEnter() {
+  if (filteredSuggestions.value.length > 0) {
+    handleSelect(filteredSuggestions.value[0]);
+  }
+}
+
 // what happens when they select item
 function handleSelect(item) {
   // clears search
@@ -78,6 +85,7 @@ function handleSelect(item) {
       class="w-full p-2 border rounded"
       @focus="showSuggestions = true"
       @input="showSuggestions = true"
+      @keydown.enter.prevent="handleEnter"
     />
 
     <!-- Suggestions Dropdown -->
