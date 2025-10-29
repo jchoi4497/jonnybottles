@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import { categories } from "./products";
 import { useRouter } from "vue-router";
 
@@ -24,8 +24,10 @@ const searchItems = categories.flatMap((category) => [
   })),
 ]);
 
-//search
+//Reactive Variables search
 const query = ref("");
+// state to control drop down visabililty
+const showSuggestions = ref(false);
 
 // filter suggestions based on query
 const filteredSuggestions = computed(() => {
@@ -36,11 +38,27 @@ const filteredSuggestions = computed(() => {
   );
 });
 
-// what happens when they select item
 const router = useRouter();
+const searchWrapper = ref(null);
+
+const handleClickOutside = (event) => {
+  if (searchWrapper.value && !searchWrapper.value.contains(event.target)) {
+    showSuggestions.value = false;
+  }
+};
+
+// Add/Remove event listener
+onMounted(() => {
+  document.addEventListener("click", handleClickOutside);
+});
+onBeforeUnmount(() => {
+  document.removeEventListener("click", handleClickOutside);
+});
+
+// what happens when they select item
 function handleSelect(item) {
   // clears search
-  query.value = "";
+  showSuggestions.value = false;
   // if category navigates to category page, if specific item goes to product details
   if (item.type === "category") {
     router.push(`/products/${item.name}`);
@@ -51,18 +69,21 @@ function handleSelect(item) {
 </script>
 
 <template>
-  <div class relative w-80>
+  <div ref="searchWrapper" class relative w-80>
+    <!-- focus and input keeps suggestions when focus/typing otherwise box goes away after one type -->
     <input
       v-model="query"
       type="text"
       placeholder="Search"
       class="w-full p-2 border rounded"
+      @focus="showSuggestions = true"
+      @input="showSuggestions = true"
     />
 
     <!-- Suggestions Dropdown -->
     <!-- Only show suggestions if user types -->
     <ul
-      v-if="filteredSuggestions.length"
+      v-if="showSuggestions && filteredSuggestions.length"
       class="absolute bg-white border w-full mt-1 rounded shadow-lg z-50"
     >
       <!--  -->
