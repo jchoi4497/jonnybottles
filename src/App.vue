@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import AgeVerification from "./components/AgeVerification.vue";
 import HeroLogo from "./components/HeroLogo.vue";
+import SearchBar from "./components/SearchBar.vue";
 
 //Controls mobile menu toggle
 const isOpen = ref(false);
@@ -17,13 +18,14 @@ const isOpen = ref(false);
 
     <!-- Hero logo (always visible, can overlap navbar if styled in HeroLogo.vue) -->
     <HeroLogo @click="isOpen = false" />
-
     <!-- Nav Bar -->
     <nav
       class="bg-gray-200 border-b border-gray-300 text-black h-32 flex justify-end relative z-50"
     >
       <!-- Desktop Nav hidden -->
       <div class="hidden sm:flex mt-20 gap-6 px-20">
+        <SearchBar />
+
         <router-link to="/" class="transition transform hover:scale-105"
           >Home</router-link
         >
