@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import AgeVerification from "./components/AgeVerification.vue";
+import AgeVerification from "./components/AgeVerification.vue"; // Changed website from 21+ to all Ages
 import HeroLogo from "./components/HeroLogo.vue";
 import SearchBar from "./components/SearchBar.vue";
 
@@ -13,9 +13,6 @@ const isOpen = ref(false);
     class="relative min-h-screen overflow-x-hidden"
     :class="{ 'overflow-hidden h-screen': isOpen }"
   >
-    <!-- Age Verification Gateway Modal -->
-    <AgeVerification />
-
     <!-- Hero logo (always visible, can overlap navbar if styled in HeroLogo.vue) -->
     <HeroLogo @click="isOpen = false" />
     <!-- Nav Bar -->
@@ -81,7 +78,7 @@ const isOpen = ref(false);
           v-if="isOpen"
           class="fixed left-0 right-0 top-32 z-40 h-[calc(100vh-8rem)] bg-gray-200 flex flex-col items-center pt-8 gap-8 text-2xl font-medium"
         >
-        <!-- close-menu emitted from SearchBar.vue  -->
+          <!-- close-menu emitted from SearchBar.vue  -->
           <SearchBar @close-menu="isOpen = false" />
 
           <router-link @click="isOpen = false" to="/">Home</router-link>
