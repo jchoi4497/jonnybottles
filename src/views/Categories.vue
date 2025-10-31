@@ -1,6 +1,6 @@
 <script setup>
+import { ref, computed, watch, nextTick } from "vue";
 import { useRoute } from "vue-router";
-import { computed, watch, nextTick } from "vue";
 import { categories } from "../components/products.js";
 
 const route = useRoute();
@@ -9,6 +9,18 @@ const route = useRoute();
 const selectedCategory = computed(() => {
   const cat = route.params.category;
   return cat ? categories.find((c) => c.name === cat) : null;
+});
+
+// tag filter state
+const selectedTag = ref("ALL");
+
+// creates computed property - value that automatically updates whenever dependencies change
+const filteredProducts = computed(() => {
+  if (!selectedCategory.value) return [];
+  if (selectedTag.value === "ALL") return selectedCategory.value.products;
+  return selectedCategory.value.products.filter((p) =>
+    p.tags.includes(selectedTag.value)
+  );
 });
 
 // built in watch function looks for change
