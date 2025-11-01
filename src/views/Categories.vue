@@ -3,24 +3,39 @@ import { ref, computed, watch, nextTick } from "vue";
 import { useRoute } from "vue-router";
 import { categories } from "../components/products.js";
 
+// This gives you one big array of all products, regardless of category.
+const allProducts = categories.flatMap((c) =>
+  c.products.map((p) => ({ ...p, category: c.name }))
+);
+
+// reactive tags for global filter
+const activeTags = ref([]);
+
+// all unique tags for buttons, new Set() makes an array of unique values only.
+const allTags = [...new Set(allProducts.flatMap((p) => p.tags || []))];
+
+// computed products based on active tags
+const filteredProducts = computed(() => {
+  if (activeTags.value.length === 0) return allProducts;
+  return allProducts.filter((p) =>
+    activeTags.value.every((tag) => p.tags.includes(tag))
+  );
+});
+
+const toggleTag = (tag) => {
+  if (activeTags.value.includes(tag)) {
+    activeTags.value = activeTags.value.filter((t) => t !== tag);
+  } else {
+    activeTags.value.push(tag);
+  }
+};
+
 const route = useRoute();
 
 // Compute selected category from URL parameter
 const selectedCategory = computed(() => {
   const cat = route.params.category;
   return cat ? categories.find((c) => c.name === cat) : null;
-});
-
-// tag filter state
-const selectedTag = ref("ALL");
-
-// creates computed property - value that automatically updates whenever dependencies change
-const filteredProducts = computed(() => {
-  if (!selectedCategory.value) return [];
-  if (selectedTag.value === "ALL") return selectedCategory.value.products;
-  return selectedCategory.value.products.filter((p) =>
-    p.tags.includes(selectedTag.value)
-  );
 });
 
 // built in watch function looks for change
@@ -89,6 +104,8 @@ watch(
       <h1 class="text-xl font-bold mb-3 text-center">
         {{ selectedCategory.name }}
       </h1>
+
+      <!-- Product Grid -->
       <div class="flex flex-wrap justify-center gap-4">
         <router-link
           v-for="product in selectedCategory.products"
