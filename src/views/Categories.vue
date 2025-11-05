@@ -73,6 +73,23 @@ watch(
       }}</span>
     </nav>
 
+    <!-- Tag Filters -->
+    <div v-if="allTags.length" class="flex flex-wrap gap-2 justify-center mb-6">
+      <button
+        v-for="tag in allTags"
+        :key="tag"
+        @click="toggleTag(tag)"
+        class="px-3 py-1 rounded-full border transition"
+        :class="
+          activeTags.includes(tag)
+            ? 'bg-green-500 text-white border-green-600'
+            : 'bg-gray-100 text-gray-700 hover:bg-green-100 border-gray-300'
+        "
+      >
+        {{ tag }}
+      </button>
+    </div>
+
     <!-- Categories list -->
     <div class="mb-8 w-full max-w-5xl">
       <h1 class="text-2xl font-bold mb-4">Categories</h1>
@@ -100,17 +117,21 @@ watch(
     </div>
 
     <!-- Show selected category items -->
-    <div v-if="selectedCategory" id="products-section" class="w-full max-w-5xl">
+    <div id="products-section" class="w-full max-w-5xl">
       <h1 class="text-xl font-bold mb-3 text-center">
-        {{ selectedCategory.name }}
+        {{ selectedCategory ? selectedCategory.name : "All Products" }}
       </h1>
 
       <!-- Product Grid -->
       <div class="flex flex-wrap justify-center gap-4">
         <router-link
-          v-for="product in selectedCategory.products"
-          :key="selectedCategory.id + '-' + product.id + '-' + product.name"
-          :to="`/products/${selectedCategory.name}/${product.id}`"
+          v-for="product in selectedCategory
+            ? filteredProducts.filter(
+                (p) => p.category === selectedCategory.name
+              )
+            : filteredProducts"
+          :key="product.id"
+          :to="`/products/${product.category}/${product.id}`"
           class="w-44 h-56 p-3 rounded-lg shadow-xl flex flex-col items-center bg-white transition transform hover:scale-105"
         >
           <div class="w-36 h-36 flex items-center justify-center mb-2">
@@ -126,8 +147,6 @@ watch(
     </div>
 
     <!-- If no category selected -->
-    <div v-else class="text-gray-500 italic">
-      Please choose a category above.
-    </div>
+    <div class="text-gray-500 italic">Please choose a category above.</div>
   </div>
 </template>
